@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: servicioresta
+---
+testFramework: junit
+sourceLanguage: java
