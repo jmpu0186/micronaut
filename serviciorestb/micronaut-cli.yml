@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: serviciorestb
+---
+testFramework: junit
+sourceLanguage: java
