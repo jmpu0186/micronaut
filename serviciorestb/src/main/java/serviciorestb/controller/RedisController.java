@@ -16,18 +16,20 @@ import serviciorestb.model.Persona;
 @Controller("/")
 public class RedisController {
 	@Inject StatefulRedisConnection<String, String> connection;
-	@Inject StatefulRedisConnection<String, Persona> connectionObject;
 	@Get("/testredis")
 	public String prueba() throws InterruptedException
 	{	
 		RedisCommands<String, String> commands = connection.sync();
+		System.out.println("================== PRUEBA CON UN DATO =================");
 		commands.set("dni","43425181");
-		commands.expire("dni", 2);
-		System.out.println(commands.get("dni"));
+		System.out.println("SETEAMOS QUE EL VALOR CADUCA EN 1 SEGUNDO");
+		commands.expire("dni", 1);
+		System.out.println("RECUPERAMOS DATO ANTES DEL SEGUNDO "+commands.get("dni"));
 		Thread.sleep(2000);
-		System.out.println(commands.get("dni"));
-		
-		
+		System.out.println("RECUPERAMOS DATO DESPUES DE 2 SEGUNDOS "+commands.get("dni"));
+		System.out.println("NO DEVLUELVE NULL "+commands.get("dni"));
+		System.out.println("=======================================================");
+		System.out.println("================== PRUEBA CON UN OBJECT =================");
 		Persona persona = new Persona();
 		persona.setNombres("Juan Manuel");
 		persona.setApellidos("Pena Uribe");
@@ -38,21 +40,25 @@ public class RedisController {
 		String json="";
 		try {
 			json = mapper.writeValueAsString(persona);
-			System.out.println("JSON "+json);
+			System.out.println("OBJECT TO JSON "+json);
 			commands.set("json", json);
-			commands.expire("json",5);
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		String jsonRpta = commands.get("json");
+		Persona p=null;
 		try {
-			Persona p = mapper.readValue(jsonRpta, Persona.class);
-			System.out.println("RECUPERADO DESDE REDIS "+p.getNombres());
+			/**
+			 * Convertimos el JSON a Object para asi setear el valor de Redis a nuestro objeto
+			 */
+			p = mapper.readValue(jsonRpta, Persona.class);
+			System.out.println("OBJECT RECUPERADO DESDE REDIS "+p.getNombres());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redis";
+		System.out.println("=======================================================");
+		return p.getNombres();
 	}
 }

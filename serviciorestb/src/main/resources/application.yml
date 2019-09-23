@@ -3,7 +3,3 @@ micronaut:
     name: serviciorestb
 redis:
     uri: redis://192.168.1.64
-    caches:
-        my-cache:
-            # expire one hour after write
-            expire-after-write: 1h

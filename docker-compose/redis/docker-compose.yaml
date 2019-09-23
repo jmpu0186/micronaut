@@ -1,0 +1,8 @@
+version: '2'
+services:
+  redis:
+    image: sameersbn/redis:4.0.9-3
+    volumes:
+     - .var:/var/lib/redis
+    ports:
+      - "6379:6379"
