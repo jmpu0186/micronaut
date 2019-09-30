@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>serviciorestb</groupId>
   <artifactId>serviciorestb</artifactId>
-  <version>0.1</version>
+  <version>0.2</version>
   <build>
     <pluginManagement>
       <plugins>
@@ -21,6 +21,11 @@
                   <arg>-parameters</arg>
                 </compilerArgs>
                 <annotationProcessorPaths>
+                  <path>
+                    <groupId>io.micronaut</groupId>
+                    <artifactId>micronaut-graal</artifactId>
+                    <version>${micronaut.version}</version>
+                  </path>
                   <path>
                     <groupId>io.micronaut</groupId>
                     <artifactId>micronaut-inject-java</artifactId>
@@ -43,6 +48,11 @@
               <arg>-parameters</arg>
             </compilerArgs>
             <annotationProcessorPaths>
+              <path>
+                <groupId>io.micronaut</groupId>
+                <artifactId>micronaut-graal</artifactId>
+                <version>${micronaut.version}</version>
+              </path>
               <path>
                 <groupId>io.micronaut</groupId>
                 <artifactId>micronaut-inject-java</artifactId>

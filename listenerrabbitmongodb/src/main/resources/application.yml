@@ -1,0 +1,16 @@
+micronaut:
+  application:
+    name: listenerrabbit
+  server:
+    port: 8085
+rabbitmq:
+  host: 192.168.1.64
+  port: 5672
+  username: "admin"
+  password: "admin"
+elk:
+  ip: 192.168.1.64
+  puerto: 9200
+  protocolo: "http"
+mongodb:
+    uri: mongodb://admin:admin@192.168.1.64:27017/micronaut

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>serviciorestb</groupId>
-  <artifactId>serviciorestb</artifactId>
-  <version>0.2</version>
+  <groupId>listenerrabbit</groupId>
+  <artifactId>listenerrabbit</artifactId>
+  <version>0.1</version>
   <properties>
     <micronaut.version>1.1.0</micronaut.version>
     <jdk.version>1.8</jdk.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <exec.mainClass>serviciorestb.Application</exec.mainClass>
+    <exec.mainClass>listenerrabbit.Application</exec.mainClass>
   </properties>
   <repositories>
     <repository>
@@ -73,10 +73,23 @@
       <artifactId>micronaut-test-junit5</artifactId>
       <scope>test</scope>
     </dependency>
-    <dependency>
+    	<dependency>
+    	<groupId>io.micronaut.configuration</groupId>
+    	<artifactId>micronaut-rabbitmq</artifactId>
+	</dependency>
+	<dependency>
+			<groupId>org.elasticsearch.client</groupId>
+			<artifactId>elasticsearch-rest-high-level-client</artifactId>
+		</dependency>
+		<dependency>
     <groupId>io.micronaut.configuration</groupId>
-    <artifactId>micronaut-redis-lettuce</artifactId>
+    <artifactId>micronaut-mongo-reactive</artifactId>
 </dependency>
+<dependency>
+			  <groupId>net.sf.dozer</groupId>
+			  <artifactId>dozer</artifactId>
+			  <version>5.5.1</version>
+		</dependency>
   </dependencies>
   <build>
     <plugins>
@@ -136,11 +149,6 @@
               <arg>-parameters</arg>
             </compilerArgs>
             <annotationProcessorPaths>
-            	<path>
-                                <groupId>io.micronaut</groupId>
-                                <artifactId>micronaut-graal</artifactId>
-                                <version>${micronaut.version}</version>
-                  </path>
                   <path>
                     <groupId>io.micronaut</groupId>
                     <artifactId>micronaut-inject-java</artifactId>
@@ -164,11 +172,6 @@
                   <arg>-parameters</arg>
                 </compilerArgs>
                 <annotationProcessorPaths>
-                 <path>
-                                        <groupId>io.micronaut</groupId>
-                                        <artifactId>micronaut-graal</artifactId>
-                                        <version>${micronaut.version}</version>
-                                    </path>
                   <path>
                     <groupId>io.micronaut</groupId>
                     <artifactId>micronaut-inject-java</artifactId>

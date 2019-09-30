@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: listenerrabbit
+---
+testFramework: junit
+sourceLanguage: java
