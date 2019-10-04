@@ -1,5 +1,7 @@
 micronaut:
   application:
     name: serviciorestb
+  server:
+    port: 8083
 redis:
     uri: redis://192.168.1.64
