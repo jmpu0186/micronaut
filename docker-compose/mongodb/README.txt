@@ -1,5 +1,5 @@
 
-1. docker exec -it ID_CONTAINER -u root
+1. docker exec -it ID_CONTAINER mongo -u root
 2. use micronaut
 3. Digitar el comando siguiente comando para crear usuario admin para el database micronaut
 db.createUser(
